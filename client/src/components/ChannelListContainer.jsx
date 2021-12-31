@@ -23,10 +23,54 @@ const SideBar = () => {
   )
 };
 
+const GamingHeader = () => {
+  return (
+    <div className="channel-list__header">
+      <p className="channel-list__header__text">Gaming Chat</p>
+    </div>
+  )
+}
+
 const ChannelListContainer = () => {
   return (
     <>
       <SideBar/>
+      <div className="channel-list__list__wrapper">
+        <GamingHeader/>
+        <ChannelSearch/>
+        <ChannelList
+          filters={{}}
+          channelRenderFilterFn={() => {}}
+          List={(listProps) => (
+            <TeamChannelList
+              {...listProps}
+              type="team"
+            />
+          )}
+          Preview={(previewProps) => (
+            <TeamChannelPreview
+              {...previewProps}
+              type="team"
+            />
+          )}
+        />
+        <ChannelList
+          filters={{}}
+          channelRenderFilterFn={() => {}}
+          List={(listProps) => (
+            <TeamChannelList
+              {...listProps}
+              type="messaging"
+            />
+          )}
+          Preview={(previewProps) => (
+            <TeamChannelPreview
+              {...previewProps}
+              type="messaging"
+            />
+          )}
+        />
+      </div>
     </>
   );
 }
